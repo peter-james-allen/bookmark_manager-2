@@ -6,10 +6,10 @@ feature 'Test infrastructure' do
 end
 
 feature 'Viewing Bookmarks' do
-  scenario 'User viewing the bookmarks' do
+  scenario 'displays the bookmarks' do
     visit('/')
     click_button 'Bookmarks'
-    expect(page).to have_content 'https://www.google.com'
-    expect(page).to have_content 'https://ruby-doc.org'
+    expect(page).to have_content 'http://www.google.com'
+    expect(page).to have_content 'http://www.makersacademy.com'
   end
 end
