@@ -20,6 +20,12 @@ Run the query saved in the file:
 ```
 01_create_bookmarks_table.sql
 ```
+To run the RSpec/PG tests, you'll need to create a database solely for testing. Enter the following into your terminal (admin will be replaced by your computers username.)
+```
+$> psql
+admin=# CREATE DATABASE "bookmark_manager_test";
+admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
+```
 
 
 As a user, so that I can revisit my favourite websites,

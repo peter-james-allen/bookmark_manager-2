@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Test infrastructure' do
   scenario 'Testing index page' do
     visit('/')
