@@ -26,6 +26,8 @@ $> psql
 admin=# CREATE DATABASE "bookmark_manager_test";
 admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
 ```
+
+```
 As a user,
 so that I can revisit my favourite websites,
 I would like to see a list of the bookmarks I've created.
