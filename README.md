@@ -26,10 +26,17 @@ $> psql
 admin=# CREATE DATABASE "bookmark_manager_test";
 admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
 ```
-
-
-As a user, so that I can revisit my favourite websites,
+As a user,
+so that I can revisit my favourite websites,
 I would like to see a list of the bookmarks I've created.
 ```
 
 <img width="629" alt="Screenshot 2021-02-22 at 15 00 30" src="https://user-images.githubusercontent.com/75075773/108837177-cb9ef280-75c9-11eb-8d43-8327bd95ecfa.png">
+
+```
+As a user,
+so that I can revisit my favourite websites,
+I would like to add to the list of bookmarks.
+```
+
+<img width="865" alt="Screenshot 2021-02-24 at 16 00 23" src="https://user-images.githubusercontent.com/75075773/109028256-86f28480-76b9-11eb-9eb4-f6c48b490864.png">
