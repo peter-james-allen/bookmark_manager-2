@@ -1,14 +1,13 @@
 require 'pg'
 
-feature 'Viewing Bookmarks' do
-  scenario 'displays the bookmarks for the user' do
+feature 'Viewing bookmarks' do
+  scenario 'A user can see bookmarks' do
+    Bookmarks.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    Bookmarks.create(url: 'http://www.google.com', title: 'Google')
 
-    Bookmarks.create(url: "http://www.google.com")
-    Bookmarks.create(url: "http://www.makersacademy.com")
+    visit '/bookmarks'
 
-    visit('/bookmarks')
-
-    expect(page).to have_content 'http://www.google.com'
-    expect(page).to have_content 'http://www.makersacademy.com'
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+    expect(page).to have_link('Google', href: 'http://www.google.com')
+    end
   end
-end
