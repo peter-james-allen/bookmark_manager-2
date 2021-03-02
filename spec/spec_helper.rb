@@ -1,7 +1,7 @@
 
 require_relative './setup_test_database'
 
-ENV['ENVIRONMENT'] = '_test'
+ENV['ENVIRONMENT'] = 'test'
 
 RSpec.configure do |config|
 

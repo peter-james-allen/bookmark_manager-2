@@ -1,4 +1,4 @@
-require 'pg'
+require 'database'
 
 class Bookmarks
 
@@ -11,29 +11,23 @@ class Bookmarks
   end
 
   def self.all
-    result = query("SELECT * FROM bookmarks").map { |bookmark| Bookmarks.new(bookmark) }
+    result = DatabaseConnection.query("SELECT * FROM bookmarks").map { |bookmark| Bookmarks.new(bookmark) }
   end
 
   def self.create(url:, title:)
-    result = query("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, title, url;").last
-    Bookmarks.new(result)
+    Bookmarks.new(DatabaseConnection.query("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, title, url;").last)
   end
 
   def self.delete(id:)
-    query("DELETE FROM bookmarks WHERE id = #{id}")
+    DatabaseConnection.query("DELETE FROM bookmarks WHERE id = #{id}")
   end
 
   def self.find(id:)
-    Bookmarks.new(query("SELECT * FROM bookmarks WHERE id = #{id}").last)
+    Bookmarks.new(DatabaseConnection.query("SELECT * FROM bookmarks WHERE id = #{id}").last)
   end
 
   def self.update(id:, url:, title:)
-    query("UPDATE bookmarks SET title = '#{title}', url = '#{url}' WHERE id = '#{id}';")
-  end
-
-  def self.query(query_string)
-    results = PG.connect(dbname: "bookmark_manager#{ENV['ENVIRONMENT']}").exec(query_string)
-    results.map { |result| result.transform_keys(&:to_sym) }
+    DatabaseConnection.query("UPDATE bookmarks SET title = '#{title}', url = '#{url}' WHERE id = '#{id}';")
   end
 
 end
