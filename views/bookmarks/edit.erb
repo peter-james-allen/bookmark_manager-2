@@ -1,0 +1,6 @@
+<form method="post" action="/bookmarks/<%= @bookmark.id %>">
+  <input type='hidden' name='_method' value='PATCH'/>
+  <input type="text" name="url" placeholder="url" value="<%= @bookmark.url %>" />
+  <input type="text" name="title" placeholder="title" value="<%= @bookmark.title %>" />
+  <input type="submit" value="Submit" />
+</form>
